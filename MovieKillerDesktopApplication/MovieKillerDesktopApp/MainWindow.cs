@@ -22,10 +22,7 @@ namespace MovieKillerDesktopApp
         private int timeAtStart;        // nazwać inaczej 
         private int timeToStartOperation; // nazwać inaczej 
         private bool bottomPanelToHide; // nazwać inaczej 
-                                        //        UINTY!!!
-                                        //        isNull w ifach itd. korzystać z gotowych rozwiązań string.IsNull => {throw Exception } itd
-                                        //        przenieść część funkcjonalności do klasy
-                                        //        IS Activate na voidach itd.
+                                        
         public MainWindow()
         {
             InitializeComponent();
