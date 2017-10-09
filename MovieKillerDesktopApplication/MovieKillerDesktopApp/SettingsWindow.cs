@@ -31,7 +31,6 @@ namespace MovieKillerDesktopApp
             {
                 return;
             }
-
             var colorToAssign = SetColorToAssign();
             SetLayoutColor(colorChangeButton, colorToAssign);
 
@@ -152,7 +151,7 @@ namespace MovieKillerDesktopApp
         }
         private void SetPathToAlarmSound()
         {
-            openFileDialog.FileName = "";
+            openFileDialog.FileName = string.Empty;
             openFileDialog.ShowReadOnly = true;
             openFileDialog.Filter = @"wav files| *.wav| All files (*.*)|*.*";
 

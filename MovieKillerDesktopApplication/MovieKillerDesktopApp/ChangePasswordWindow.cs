@@ -10,21 +10,23 @@ namespace MovieKillerDesktopApp
         {
             InitializeComponent();
         }
-
         private void btn_acceptChangePassword_Click(object sender, EventArgs e)
         {
             if(IsPasswordCorrect(tb_enterOldPassword.Text))
             {
-                var principalForm = Application.OpenForms.OfType<MainWindow>().Single();
-                principalForm.PasswordToOpenConnection = tb_enterNewPassword.Text;
-                MessageBox.Show("Dokonano zmiany hasła!", "Komunikat");
+                ChangePassword();
             }
             else
             {
-                MessageBox.Show("Podane hasło jest niewłaściwe", "Bład!");
+                MessageBox.Show(@"Dokonano zmiany hasła!", @"Komunikat");
             }
         }
-
+        private void ChangePassword()
+        {
+            var principalForm = Application.OpenForms.OfType<MainWindow>().Single();
+            principalForm.PasswordToOpenConnection = tb_enterNewPassword.Text;
+            MessageBox.Show(@"Dokonano zmiany hasła!", @"Komunikat");
+        }
         private bool IsPasswordCorrect(string oldPasswordGivenByUser)
         {
             var principalForm = Application.OpenForms.OfType<MainWindow>().Single();
@@ -36,7 +38,6 @@ namespace MovieKillerDesktopApp
             }
             return false;
         }
-
         private void btn_cancelChangePassword_Click(object sender, EventArgs e)
         {
             Close();
