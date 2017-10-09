@@ -254,7 +254,6 @@
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Ustawienia dźwięku budzika";
-            this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
             // 
             // btn_stopTestingSound
             // 
@@ -315,7 +314,6 @@
             this.cb_collectionOfAvaibleSounds.Name = "cb_collectionOfAvaibleSounds";
             this.cb_collectionOfAvaibleSounds.Size = new System.Drawing.Size(178, 24);
             this.cb_collectionOfAvaibleSounds.TabIndex = 4;
-            this.cb_collectionOfAvaibleSounds.SelectedIndexChanged += new System.EventHandler(this.cb_collectionOfAvaibleSounds_SelectedIndexChanged);
             // 
             // openFileDialog
             // 
@@ -468,7 +466,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "SettingsWindow";
             this.Text = "Ustawienia";
-            this.Load += new System.EventHandler(this.SettingsWindow_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox3.ResumeLayout(false);

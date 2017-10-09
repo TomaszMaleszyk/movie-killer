@@ -1,18 +1,12 @@
 ﻿using System.Media;
+using MovieKillerDesktopApp.Interfaces;
 
 namespace MovieKillerDesktopApp.Models
 {
-    public class AlarmClockManager
+    public class AlarmClockManager : IAlarmManager
     {
-        private SoundPlayer soundPlayer;
-        public enum KindOfAlarmSound
-        {
-            Alarm1,
-            Alarm2,
-            Alarm3,
-            Alarm4,
-            Alarm5
-        }
+        private readonly SoundPlayer soundPlayer;
+
         public AlarmClockManager()
         {
             soundPlayer = new SoundPlayer(Properties.Resources.Alarm1);

@@ -2,17 +2,17 @@
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using MovieKillerDesktopApp.Interfaces;
 
 namespace MovieKillerDesktopApp.Models
 {
-    public class TcpConnectionManager : TcpListener
+    public class TcpConnectionManager : TcpListener, IConnectionManager
     {
         private readonly TcpListener tcpListener;
         private Socket serverSocket;
         private byte[] buffer;
         private new bool Active => base.Active;
         public string SocketRemoteEndpointAddress { get; private set; }
-
         public TcpConnectionManager(IPAddress ipAddress, int port) : base(ipAddress, port)
         {
             tcpListener = new TcpListener(ipAddress, port);
@@ -91,10 +91,6 @@ namespace MovieKillerDesktopApp.Models
             }
             return receivedData;
         }
-        public string ConnectedDeviceName()
-        {
-            return SocketRemoteEndpointAddress;
-        }
         public void SendData(string message)
         {
             byte[] byData = Encoding.ASCII.GetBytes(message);
@@ -107,6 +103,10 @@ namespace MovieKillerDesktopApp.Models
                 Console.WriteLine(e);
                 //                throw;
             }
+        }
+        public string ConnectedDeviceName()
+        {
+            return SocketRemoteEndpointAddress;
         }
     }
 }

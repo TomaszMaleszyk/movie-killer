@@ -283,7 +283,6 @@
             this.lb_connectionStatus.Size = new System.Drawing.Size(122, 18);
             this.lb_connectionStatus.TabIndex = 24;
             this.lb_connectionStatus.Text = "Status połączenia: ";
-            this.lb_connectionStatus.Click += new System.EventHandler(this.lb_connectionStatus_Click);
             this.lb_connectionStatus.MouseEnter += new System.EventHandler(this.panel_bottomMenu_MouseEnter);
             // 
             // panel_controlClock
@@ -515,7 +514,6 @@
             this.lb_messageReceived.TabIndex = 25;
             this.lb_messageReceived.Text = "Użytkownik wydał komendę:";
             this.lb_messageReceived.Visible = false;
-            this.lb_messageReceived.Click += new System.EventHandler(this.lb_messageReceived_Click);
             this.lb_messageReceived.MouseEnter += new System.EventHandler(this.panel_bottomMenu_MouseEnter);
             // 
             // cb_listenningConnection
@@ -549,7 +547,6 @@
             this.Name = "MainWindow";
             this.Opacity = 0.98D;
             this.Text = "MOVIE KILLER";
-            this.Load += new System.EventHandler(this.MainWindow_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numUD_hours)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUD_minutes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUD_seconds)).EndInit();

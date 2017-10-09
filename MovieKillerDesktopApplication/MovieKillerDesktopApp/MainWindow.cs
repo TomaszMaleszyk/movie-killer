@@ -4,44 +4,45 @@ using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MovieKillerDesktopApp.Interfaces;
 using MovieKillerDesktopApp.Models;
 
 namespace MovieKillerDesktopApp
 {
     public partial class MainWindow : Form
     {
-        public string PasswordToConnection { get; set; }
-        public bool CheckingPasswordToConnect { get; set; }
-        public bool StopTimerFromDevice { get; set; }
-        public int LevelOfSpeed { get; set; }
+        public string PasswordToOpenConnection { get; set; }
+        public bool IsCheckingPasswordAvaible { get; set; }
+        public bool IsTimerStoppedByDevice { get; set; }
+        public int LevelOfClockTickingSpeed { get; set; }
         private readonly TcpConnectionManager deviceConnector;
-        private readonly LayoutColorManager colorManager;
+        private readonly LayoutColorManager layoutColorManager;
         private readonly AlarmClockManager alarmClockManager;
         private OperationManager.ChooseKindOfOperation kindOfOperationToDo;
         private CancellationToken cancellationToken;
-        private int timeAtStart;        // nazwać inaczej 
-        private int timeToStartOperation; // nazwać inaczej 
-        private bool bottomPanelToHide; // nazwać inaczej 
-                                        
+        private int premierTimeToStartOperation;
+        private int actualTimeToStartOperation;
+        private bool isBottomMenuHidden;
+
         public MainWindow()
         {
             InitializeComponent();
             SetStartupPropertiesOfComponents();
             deviceConnector = new TcpConnectionManager(IPAddress.Any, 20);
-            colorManager = new LayoutColorManager();
+            layoutColorManager = new LayoutColorManager();
             alarmClockManager = new AlarmClockManager();
             kindOfOperationToDo = new OperationManager.ChooseKindOfOperation();
 
-            Task.Factory.StartNew(ControlBottomMenu);
+            Task.Factory.StartNew(ControlPositionOfBottomMenu);
 
-            LevelOfSpeed = 1000;
-            bottomPanelToHide = true;
+            LevelOfClockTickingSpeed = 1000;
+            isBottomMenuHidden = true;
 
             AppDomain.CurrentDomain.ProcessExit += OnProcessExit;
 
-            PasswordToConnection = "000"; //test
-            CheckingPasswordToConnect = true;
-            StopTimerFromDevice = false;
+            PasswordToOpenConnection = "000"; //test
+            IsCheckingPasswordAvaible = true;
+            IsTimerStoppedByDevice = false;
         }
         private void OnProcessExit(object sender, EventArgs e)
         {
@@ -50,6 +51,7 @@ namespace MovieKillerDesktopApp
                 deviceConnector.AbortConnection();
             }
         }
+        #region InitialSettingsOfMainWindow
         private void SetStartupPropertiesOfComponents()
         {
             rb_timeLeft.Checked = true;
@@ -66,7 +68,7 @@ namespace MovieKillerDesktopApp
                 numUD_seconds.Enabled = true;
                 numUD_inputTimeToStart.Enabled = false;
             }
-            if(availability == false)
+            else
             {
                 numUD_hours.Enabled = false;
                 numUD_minutes.Enabled = false;
@@ -76,70 +78,78 @@ namespace MovieKillerDesktopApp
         }
         public void SetLayoutColor()
         {
-            BackColor = colorManager.WindowBackgroundColor;
+            BackColor = layoutColorManager.WindowBackgroundColor;
 
-            panel_clock.BackColor = colorManager.PanelClockBackgroundColor;
+            panel_clock.BackColor = layoutColorManager.PanelClockBackgroundColor;
 
-            gb_operationsCollection.BackColor = colorManager.PanelOptionsBackgroundColor;
-            gb_setTime.BackColor = colorManager.PanelOptionsBackgroundColor;
+            gb_operationsCollection.BackColor = layoutColorManager.PanelOptionsBackgroundColor;
+            gb_setTime.BackColor = layoutColorManager.PanelOptionsBackgroundColor;
 
-            lb_timer.BackColor = colorManager.LabelClockBackgroundColor;
-            lb_endOfOperation.BackColor = colorManager.LabelClockBackgroundColor;
+            lb_timer.BackColor = layoutColorManager.LabelClockBackgroundColor;
+            lb_endOfOperation.BackColor = layoutColorManager.LabelClockBackgroundColor;
 
-            lb_timer.ForeColor = colorManager.LabelClockForegroundColor;
-            lb_endOfOperation.ForeColor = colorManager.LabelClockForegroundColor;
+            lb_timer.ForeColor = layoutColorManager.LabelClockForegroundColor;
+            lb_endOfOperation.ForeColor = layoutColorManager.LabelClockForegroundColor;
 
-            rb_alarmClock.BackColor = colorManager.LabelOptionsBackgroundColor;
-            rb_lock.BackColor = colorManager.LabelOptionsBackgroundColor;
-            rb_logout.BackColor = colorManager.LabelOptionsBackgroundColor;
-            rb_restart.BackColor = colorManager.LabelOptionsBackgroundColor;
-            rb_shutDown.BackColor = colorManager.LabelOptionsBackgroundColor;
-            rb_sleep.BackColor = colorManager.LabelOptionsBackgroundColor;
+            rb_alarmClock.BackColor = layoutColorManager.LabelOptionsBackgroundColor;
+            rb_lock.BackColor = layoutColorManager.LabelOptionsBackgroundColor;
+            rb_logout.BackColor = layoutColorManager.LabelOptionsBackgroundColor;
+            rb_restart.BackColor = layoutColorManager.LabelOptionsBackgroundColor;
+            rb_shutDown.BackColor = layoutColorManager.LabelOptionsBackgroundColor;
+            rb_sleep.BackColor = layoutColorManager.LabelOptionsBackgroundColor;
 
-            rb_timeLeft.BackColor = colorManager.LabelOptionsBackgroundColor;
-            rb_atTime.BackColor = colorManager.LabelOptionsBackgroundColor;
+            rb_timeLeft.BackColor = layoutColorManager.LabelOptionsBackgroundColor;
+            rb_atTime.BackColor = layoutColorManager.LabelOptionsBackgroundColor;
 
-            rb_alarmClock.ForeColor = colorManager.LabelOptionsForegroundColor;
-            rb_lock.ForeColor = colorManager.LabelOptionsForegroundColor;
-            rb_logout.ForeColor = colorManager.LabelOptionsForegroundColor;
-            rb_restart.ForeColor = colorManager.LabelOptionsForegroundColor;
-            rb_shutDown.ForeColor = colorManager.LabelOptionsForegroundColor;
-            rb_sleep.ForeColor = colorManager.LabelOptionsForegroundColor;
+            rb_alarmClock.ForeColor = layoutColorManager.LabelOptionsForegroundColor;
+            rb_lock.ForeColor = layoutColorManager.LabelOptionsForegroundColor;
+            rb_logout.ForeColor = layoutColorManager.LabelOptionsForegroundColor;
+            rb_restart.ForeColor = layoutColorManager.LabelOptionsForegroundColor;
+            rb_shutDown.ForeColor = layoutColorManager.LabelOptionsForegroundColor;
+            rb_sleep.ForeColor = layoutColorManager.LabelOptionsForegroundColor;
 
-            rb_timeLeft.ForeColor = colorManager.LabelOptionsForegroundColor;
-            rb_atTime.ForeColor = colorManager.LabelOptionsForegroundColor;
-
+            rb_timeLeft.ForeColor = layoutColorManager.LabelOptionsForegroundColor;
+            rb_atTime.ForeColor = layoutColorManager.LabelOptionsForegroundColor;
         }
+        #endregion
+        #region OnClockOperations
         private void btn_startClock_Click(object sender, EventArgs e)
+        {
+            PrepareClockToStart();
+            ClockStart(actualTimeToStartOperation);
+        }
+        private void PrepareClockToStart()
         {
             if(rb_timeLeft.Checked)
             {
                 var timeToStart = int.Parse(numUD_inputTimeToStart.Text);
-
-                timeToStartOperation = ComputeTimeToStartOperation(timeToStart);
+                actualTimeToStartOperation = ComputeTimeToStartOperation(timeToStart);
             }
             if(rb_atTime.Checked)
             {
-                timeToStartOperation = ComputeTimeToStartOperation();
+                var dateOfFinishOperation = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day,
+                    (int)numUD_hours.Value, (int)numUD_minutes.Value, (int)numUD_seconds.Value);
+                actualTimeToStartOperation = ComputeTimeToStartOperation(dateOfFinishOperation);
             }
-
-            ClockStart(timeToStartOperation);
         }
-        private int ComputeTimeToStartOperation()
+        private int ComputeTimeToStartOperation(DateTime dateTime)
         {
-            var dateOfFinish = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, (int)numUD_hours.Value, (int)numUD_minutes.Value, (int)numUD_seconds.Value);
-            var time = dateOfFinish.Subtract(DateTime.Now);
-            var timeToStart = (int)time.TotalSeconds;
+            var timeToStartOperation = ConvertDateTimeToTimeToStart(dateTime);
+            return timeToStartOperation;
+        }
+        private int ConvertDateTimeToTimeToStart(DateTime dateTime)
+        {
+            var time = dateTime.Subtract(DateTime.Now);
+            var timeToStartOperation = (int)time.TotalSeconds;
 
-            if(timeToStart < 0)
+            if(timeToStartOperation < 0)
             {
-                dateOfFinish = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day + 1, (int)numUD_hours.Value, (int)numUD_minutes.Value, (int)numUD_seconds.Value);
-
-                time = dateOfFinish.Subtract(DateTime.Now);
-                timeToStart = (int)time.TotalSeconds;
+                dateTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day + 1,
+                                            (int)numUD_hours.Value, (int)numUD_minutes.Value, (int)numUD_seconds.Value);
+                time = dateTime.Subtract(DateTime.Now);
+                timeToStartOperation = (int)time.TotalSeconds;
             }
-
-            return timeToStart;
+            return timeToStartOperation;
         }
         private static int ComputeTimeToStartOperation(int timeToStart)
         {
@@ -156,7 +166,7 @@ namespace MovieKillerDesktopApp
 
             if(timeToEnd >= 0)
             {
-                timeAtStart = timeToEnd;
+                premierTimeToStartOperation = timeToEnd;
 
                 BeginInvoke(new Action(delegate
                 {
@@ -171,9 +181,9 @@ namespace MovieKillerDesktopApp
         }
         private void timer_clock_Tick(object sender, EventArgs e)
         {
-            SetSpeedOfOperation(LevelOfSpeed);
+            SetSpeedOfOperation(LevelOfClockTickingSpeed);
 
-            if(timeToStartOperation == 0)
+            if(actualTimeToStartOperation == 0)
             {
                 StartOperation(kindOfOperationToDo);
                 ResetClock();
@@ -184,18 +194,13 @@ namespace MovieKillerDesktopApp
                 }
                 return;
             }
-            timeToStartOperation--;
+            actualTimeToStartOperation--;
 
-            UpdateClock(LevelOfSpeed);
-        }
-        private void StartOperation(OperationManager.ChooseKindOfOperation operationToDo)
-        {
-            var operationManager = new OperationManager(alarmClockManager);
-            operationManager.StartOperation(operationToDo);
+            UpdateClock(LevelOfClockTickingSpeed);
         }
         private void UpdateClock(int speed)
         {
-            var timerManager = new AppTimerManager(timeToStartOperation, timeAtStart);
+            var timerManager = new AppTimerManager(actualTimeToStartOperation, premierTimeToStartOperation);
 
             lb_timer.Text = timerManager.ShowTimeToEnd();
             lb_endOfOperation.Text = timerManager.ShowTimeEndOfOperation(speed);
@@ -204,10 +209,10 @@ namespace MovieKillerDesktopApp
         }
         private void ResetClock()
         {
-            timeToStartOperation = 0;
-            timeAtStart = 0;
+            actualTimeToStartOperation = 0;
+            premierTimeToStartOperation = 0;
 
-            var timerManager = new AppTimerManager(timeToStartOperation, timeAtStart);
+            var timerManager = new AppTimerManager(actualTimeToStartOperation, premierTimeToStartOperation);
 
             lb_timer.Text = timerManager.ShowTimeToEnd();
             lb_endOfOperation.Text = @"00:00:00";
@@ -216,8 +221,8 @@ namespace MovieKillerDesktopApp
         }
         private void StopAlarmClock()
         {
-            DialogResult result1 = MessageBox.Show("Wyłącz alarm",
-                "Komunikat",
+            DialogResult result1 = MessageBox.Show(@"Wyłącz alarm",
+                @"Komunikat",
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Stop);
             if(result1 == DialogResult.OK)
@@ -225,6 +230,46 @@ namespace MovieKillerDesktopApp
                 StartOperation(OperationManager.ChooseKindOfOperation.StopAlarmClock);
             }
         }
+        private void cb_pauseClock_CheckedChanged(object sender, EventArgs e)
+        {
+            PauseClock();
+        }
+        private void PauseClock()
+        {
+            timer_clock.Enabled = cb_pauseClock.Checked != true;
+        }
+        private void btn_stopClock_Click(object sender, EventArgs e)
+        {
+            timer_clock.Enabled = false;
+            ResetClock();
+        }
+        private void btn_slowDownCountdown_Click(object sender, EventArgs e)
+        {
+            LevelOfClockTickingSpeed += 200;
+        }
+        private void btn_speedUpCountdown_Click(object sender, EventArgs e)
+        {
+            if(LevelOfClockTickingSpeed > 200)
+            {
+                LevelOfClockTickingSpeed -= 200;
+            }
+        }
+        private void SetSpeedOfOperation(int speed)
+        {
+            if(speed > 0)
+            {
+                timer_clock.Interval = speed;
+            }
+        }
+        #endregion
+        #region SystemOperations
+        private void StartOperation(OperationManager.ChooseKindOfOperation operationToDo)
+        {
+            var operationManager = new OperationManager(alarmClockManager);
+            operationManager.StartOperation(operationToDo);
+        }
+        #endregion
+        #region DeviceConnectionSettings
         private void cbListenningConnection_CheckedChanged(object sender, EventArgs e)
         {
             if(cb_listenningConnection.Checked)
@@ -255,7 +300,7 @@ namespace MovieKillerDesktopApp
         }
         private void InteractWithDevice()
         {
-            StopTimerFromDevice = false;
+            IsTimerStoppedByDevice = false;
 
             while(!cancellationToken.IsCancellationRequested)
             {
@@ -267,12 +312,12 @@ namespace MovieKillerDesktopApp
                 }
                 else
                 {
-                    RespondOnCommandFromDevice(deviceConnector, PasswordToConnection);
+                    RespondOnCommandFromDevice(deviceConnector, PasswordToOpenConnection);
                 }
                 ShowConnectedDevice(deviceConnector);
             }
         }
-        private void ConnectToDevice(TcpConnectionManager connectionManager)
+        private void ConnectToDevice(IConnectionManager connectionManager)
         {
             connectionManager.StartListenning();
             connectionManager.OpenConnection();
@@ -282,9 +327,9 @@ namespace MovieKillerDesktopApp
                 connectionManager.AbortConnection();
             }
         }
-        private bool ControlConnectionAccesibility(TcpConnectionManager connectionManager)
+        private bool ControlConnectionAccesibility(IConnectionManager connectionManager)
         {
-            if(CheckingPasswordToConnect)
+            if(IsCheckingPasswordAvaible)
             {
                 var passwordToConnect = connectionManager.ReceiveData();
 
@@ -292,9 +337,9 @@ namespace MovieKillerDesktopApp
             }
             return true;
         }
-        private bool IsPasswordFromDeviceOk(TcpConnectionManager connectionManager, string passwordToConnectionFromDevice)
+        private bool IsPasswordFromDeviceOk(IConnectionManager connectionManager, string passwordToConnectionFromDevice)
         {
-            if(PasswordToConnection != passwordToConnectionFromDevice)
+            if(PasswordToOpenConnection != passwordToConnectionFromDevice)
             {
                 connectionManager.SendData("Wrong");
                 WrongPasswordShowMessage(); //nie podoba mi się miejsce tej fukcji     
@@ -311,7 +356,7 @@ namespace MovieKillerDesktopApp
                 "Próba połączenia się z aplikacją przez urządzenie mobilne{0}" +
                 "została odrzucona - błędne hasło", Environment.NewLine));
         }
-        private void RespondOnCommandFromDevice(TcpConnectionManager connectionManager, string passwordToConnection)
+        private void RespondOnCommandFromDevice(IConnectionManager connectionManager, string passwordToConnection)
         {
             var dataDecoder = new ReceivedDataDecoder();
             var currentData = connectionManager.ReceiveData();
@@ -334,16 +379,16 @@ namespace MovieKillerDesktopApp
             {
                 try
                 {
-                    timeToStartOperation =
+                    actualTimeToStartOperation =
                         ComputeTimeToStartOperation(int.Parse(dataDecoder.DecodeMessage("Time", currentData)));
-                    LevelOfSpeed = 1000;
-                    ClockStart(timeToStartOperation);
+                    LevelOfClockTickingSpeed = 1000;
+                    ClockStart(actualTimeToStartOperation);
                 }
                 catch(Exception e)
                 {
                     if(e is FormatException)
                     {
-                        MessageBox.Show("Nieprawidłowy format wiadomości");
+                        MessageBox.Show(@"Nieprawidłowy format wiadomości");
                     }
                     else
                     {
@@ -353,7 +398,7 @@ namespace MovieKillerDesktopApp
             }
             else
             {
-                LevelOfSpeed = int.Parse(dataDecoder.DecodeMessage("Speed", currentData));
+                LevelOfClockTickingSpeed = int.Parse(dataDecoder.DecodeMessage("Speed", currentData));
             }
         }
         private void SetOperationToDo(string currentCommand) //może chooseKindOfOperation  dodać + sprawdzić czy reaguje na zmiany operacji
@@ -386,7 +431,7 @@ namespace MovieKillerDesktopApp
                     break;
             }
         }
-        private void ShowConnectedDevice(TcpConnectionManager connectionManager)
+        private void ShowConnectedDevice(IConnectionManager connectionManager)
         {
             if(connectionManager.IsConnected())
             {
@@ -397,69 +442,28 @@ namespace MovieKillerDesktopApp
                 LabelConnectionStatusText("Brak połączenia");
             }
         }
-        private void cb_pauseClock_CheckedChanged(object sender, EventArgs e)
-        {
-            PauseClock();
-        }
-        private void PauseClock()
-        {
-            timer_clock.Enabled = cb_pauseClock.Checked != true;
-        }
-        private void btn_slowDownCountdown_Click(object sender, EventArgs e)
-        {
-            LevelOfSpeed += 200;
-        }
-        private void btn_speedUpCountdown_Click(object sender, EventArgs e)
-        {
-            if(LevelOfSpeed > 200)
-            {
-                LevelOfSpeed -= 200;
-            }
-        }
-        private void SetSpeedOfOperation(int speed)
-        {
-            if(speed > 0)
-            {
-                timer_clock.Interval = speed;
-            }
-        }
+        #endregion
+        #region BottomMenuSettings
         private void panel_bottomMenu_MouseEnter(object sender, EventArgs e)
         {
-            bottomPanelToHide = false;
+            isBottomMenuHidden = false;
         }
         private void panel_bottomMenu_MouseLeave(object sender, EventArgs e)
         {
-            bottomPanelToHide = true;
+            isBottomMenuHidden = true;
         }
-        private void lb_messageReceived_Click(object sender, EventArgs e)
-        {
-
-        }
-        private void btn_stopClock_Click(object sender, EventArgs e)
-        {
-            timer_clock.Enabled = false;
-            ResetClock();
-        }
-        private void btn_settings_Click(object sender, EventArgs e)
-        {
-            new SettingsWindow(colorManager, alarmClockManager).Show();
-        }
-        private void lb_connectionStatus_Click(object sender, EventArgs e)
-        {
-
-        }
-        private void ControlBottomMenu()
+        private Task ControlPositionOfBottomMenu()
         {
             while(true)
             {
-                if(bottomPanelToHide && panel_bottomMenu.Height > 20)
+                if(isBottomMenuHidden && panel_bottomMenu.Height > 20)
                 {
                     panel_bottomMenu.Invoke(new Action(delegate
                     {
                         panel_bottomMenu.Height--;
                     }));
                 }
-                if(bottomPanelToHide == false && panel_bottomMenu.Height <= 50)
+                if(isBottomMenuHidden == false && panel_bottomMenu.Height <= 50)
                 {
                     panel_bottomMenu.Invoke(new Action(delegate
                     {
@@ -467,6 +471,12 @@ namespace MovieKillerDesktopApp
                     }));
                 }
             }
+        }
+        #endregion
+        #region ComponentsSettings
+        private void btn_settings_Click(object sender, EventArgs e)
+        {
+            new SettingsWindow(layoutColorManager, alarmClockManager).Show();
         }
         private void RadioButtonChooseKindOfCountingTimeManager(object sender, EventArgs e)
         {
@@ -484,7 +494,7 @@ namespace MovieKillerDesktopApp
             var radioButton = sender as RadioButton;
             if(radioButton != null && radioButton.Checked)
             {
-                var operation = "";
+                var operation = string.Empty;
                 switch(radioButton.Name)
                 {
                     case "rb_lock":
@@ -508,13 +518,12 @@ namespace MovieKillerDesktopApp
                 }
                 SetOperationToDo(operation);
             }
-
         }
         private void LabelConnectionStatusText(string message)
         {
             lb_connectionStatus.Invoke(new Action(delegate
             {
-                lb_connectionStatus.Text = string.Format("Status połączenia:{0}{1}", Environment.NewLine, message);
+                lb_connectionStatus.Text = $@"Status połączenia:{Environment.NewLine}{message}";
             }));
         }
         private void LabelMessageReceivedText(string message)
@@ -522,13 +531,9 @@ namespace MovieKillerDesktopApp
             lb_messageReceived.Invoke(new Action(delegate
             {
                 lb_messageReceived.Visible = true;
-                lb_messageReceived.Text = string.Format("Użytkownik wydał komendę: {0}{1}",
-                                                        Environment.NewLine, message);
+                lb_messageReceived.Text = $@"Użytkownik wydał komendę: {Environment.NewLine}{message}";
             }));
         }
-        private void MainWindow_Load(object sender, EventArgs e)
-        {
-
-        }
+        #endregion
     }
 }

@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using MovieKillerDesktopApp.Interfaces;
 
 namespace MovieKillerDesktopApp.Models
 {
@@ -13,7 +14,7 @@ namespace MovieKillerDesktopApp.Models
         private static extern void LockWorkStation();
         [DllImport("PowrProf.dll", CharSet = CharSet.Auto, ExactSpelling = true)]
         private static extern bool SetSuspendState(bool hiberate, bool forceCritical, bool disableWakeEvent);
-        private AlarmClockManager alarmClockManager;
+        private readonly IAlarmManager alarmManager;
         public enum ChooseKindOfOperation
         {
             Shutdown,
@@ -26,13 +27,12 @@ namespace MovieKillerDesktopApp.Models
             StopTimerFromDevice,
             SetLevelOfSpeed
         }
-        public OperationManager(AlarmClockManager alarmClock)
+        public OperationManager(IAlarmManager alarm)
         {
-            alarmClockManager = alarmClock;
+            alarmManager = alarm;
         }
         public void StartOperation(ChooseKindOfOperation kindOfOperation)
         {
-            MainWindow principalForm;
             switch(kindOfOperation)
             {
                 case ChooseKindOfOperation.Shutdown:
@@ -51,19 +51,19 @@ namespace MovieKillerDesktopApp.Models
                     SetSuspendState(false, true, true);
                     break;
                 case ChooseKindOfOperation.Alarm:
-                    alarmClockManager.StartToMakeNoise();
+                    alarmManager.StartToMakeNoise();
                     break;
                 case ChooseKindOfOperation.StopAlarmClock:
-                    alarmClockManager.KillAlarmClock();
+                    alarmManager.KillAlarmClock();
                     break;
                 case ChooseKindOfOperation.StopTimerFromDevice:
-                    principalForm = Application.OpenForms.OfType<MainWindow>().Single();
-                    principalForm.StopTimerFromDevice = true;
+                    var principalForm = Application.OpenForms.OfType<MainWindow>().Single();
+                    principalForm.IsTimerStoppedByDevice = true;
                     break;
-//                case ChooseKindOfOperation.SetLevelOfSpeed:
-//                    principalForm = Application.OpenForms.OfType<MainWindow>().Single();
-//                    principalForm.levelOfSpeed 
-//                    break;
+                    //                case ChooseKindOfOperation.SetLevelOfSpeed:
+                    //                    principalForm = Application.OpenForms.OfType<MainWindow>().Single();
+                    //                    principalForm.levelOfSpeed 
+                    //                    break;
             }
         }
 

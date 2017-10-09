@@ -67,6 +67,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\IAlarmManager.cs" />
+    <Compile Include="Interfaces\IConnectionManager.cs" />
     <Compile Include="Models\AlarmClockManager.cs" />
     <Compile Include="Models\AppTimerManager.cs" />
     <Compile Include="ChangePasswordWindow.cs">

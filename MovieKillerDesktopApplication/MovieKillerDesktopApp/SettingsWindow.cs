@@ -2,38 +2,38 @@
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using Microsoft.VisualBasic;
+using MovieKillerDesktopApp.Interfaces;
 using MovieKillerDesktopApp.Models;
 
 namespace MovieKillerDesktopApp
 {
     public partial class SettingsWindow : Form
     {
-        private AlarmClockManager alarmClockManager;
-        private LayoutColorManager colorManager;
+        private readonly IAlarmManager alarmManager;
+        private readonly LayoutColorManager colorManager;
 
         private bool soundOfAlarmFromResources;
-        public SettingsWindow(LayoutColorManager colorManager, AlarmClockManager alarmClockManager)
+        public SettingsWindow(LayoutColorManager colorManager, IAlarmManager alarmManager)
         {
             InitializeComponent();
             this.colorManager = colorManager;
-            this.alarmClockManager = alarmClockManager;
+            this.alarmManager = alarmManager;
             rb_setSound_App.Checked = true;
             soundOfAlarmFromResources = true;
             cb_collectionOfAvaibleSounds.SelectedIndex = 0;
-            this.TopMost = true;
+            TopMost = true;
         }
         private void ColorChangeButtonClick(object sender, EventArgs e)
         {
-            var button = sender as Button;
+            var colorChangeButton = sender as Button;
 
-            if(button == null)
+            if(colorChangeButton == null)
             {
                 return;
             }
 
-            var color = SetColorToAssign();
-            SetLayoutColor(button, color);
+            var colorToAssign = SetColorToAssign();
+            SetLayoutColor(colorChangeButton, colorToAssign);
 
             var principalForm = Application.OpenForms.OfType<MainWindow>().Single();
             principalForm.SetLayoutColor();
@@ -47,37 +47,37 @@ namespace MovieKillerDesktopApp
             }
             return color;
         }
-        private void SetLayoutColor(Button button, Color color)
+        private void SetLayoutColor(Button button, Color elementOfLayoutColor)
         {
             switch(button.Name)
             {
                 case "btn_changeColorOfWindowBackground":
-                    button.BackColor = color;
-                    colorManager.WindowBackgroundColor = color;
+                    button.BackColor = elementOfLayoutColor;
+                    colorManager.WindowBackgroundColor = elementOfLayoutColor;
                     break;
                 case "btn_changeColorOfPanelOptionsBackgroundColor":
-                    button.BackColor = color;
-                    colorManager.PanelOptionsBackgroundColor = color;
+                    button.BackColor = elementOfLayoutColor;
+                    colorManager.PanelOptionsBackgroundColor = elementOfLayoutColor;
                     break;
                 case "btn_changeColorOfPanelClockBackground":
-                    button.BackColor = color;
-                    colorManager.PanelClockBackgroundColor = color;
+                    button.BackColor = elementOfLayoutColor;
+                    colorManager.PanelClockBackgroundColor = elementOfLayoutColor;
                     break;
                 case "btn_changeColorOfLabelOptionsBackgroundColor":
-                    button.BackColor = color;
-                    colorManager.LabelOptionsBackgroundColor = color;
+                    button.BackColor = elementOfLayoutColor;
+                    colorManager.LabelOptionsBackgroundColor = elementOfLayoutColor;
                     break;
                 case "btn_changeColorOfLabelClockBackgroundColor":
-                    button.BackColor = color;
-                    colorManager.LabelClockBackgroundColor = color;
+                    button.BackColor = elementOfLayoutColor;
+                    colorManager.LabelClockBackgroundColor = elementOfLayoutColor;
                     break;
                 case "btn_changeColorOfLabelOptionsForegroundColor":
-                    button.BackColor = color;
-                    colorManager.LabelOptionsForegroundColor = color;
+                    button.BackColor = elementOfLayoutColor;
+                    colorManager.LabelOptionsForegroundColor = elementOfLayoutColor;
                     break;
                 case "btn_changeColorOfLabelClockForegroundColor":
-                    button.BackColor = color;
-                    colorManager.LabelClockForegroundColor = color;
+                    button.BackColor = elementOfLayoutColor;
+                    colorManager.LabelClockForegroundColor = elementOfLayoutColor;
                     break;
             }
         }
@@ -118,23 +118,23 @@ namespace MovieKillerDesktopApp
                 switch(cb_collectionOfAvaibleSounds.SelectedItem.ToString())
                 {
                     case "Alarm 1":
-                        alarmClockManager.ChooseAlarmSound(AlarmClockManager.KindOfAlarmSound.Alarm1);
+                        alarmManager.ChooseAlarmSound(KindOfAlarmSound.Alarm1);
                         break;
                     case "Alarm 2":
-                        alarmClockManager.ChooseAlarmSound(AlarmClockManager.KindOfAlarmSound.Alarm2);
+                        alarmManager.ChooseAlarmSound(KindOfAlarmSound.Alarm2);
                         break;
                     case "Alarm 3":
-                        alarmClockManager.ChooseAlarmSound(AlarmClockManager.KindOfAlarmSound.Alarm3);
+                        alarmManager.ChooseAlarmSound(KindOfAlarmSound.Alarm3);
                         break;
                     case "Alarm 4":
-                        alarmClockManager.ChooseAlarmSound(AlarmClockManager.KindOfAlarmSound.Alarm4);
+                        alarmManager.ChooseAlarmSound(KindOfAlarmSound.Alarm4);
                         break;
                     case "Alarm 5":
-                        alarmClockManager.ChooseAlarmSound(AlarmClockManager.KindOfAlarmSound.Alarm5);
+                        alarmManager.ChooseAlarmSound(KindOfAlarmSound.Alarm5);
                         break;
                 }
             }
-            alarmClockManager.TestAlarmSound();
+            alarmManager.TestAlarmSound();
         }
         private void SetKindOfPathToAlarmSound(bool fromResources)
         {
@@ -154,16 +154,16 @@ namespace MovieKillerDesktopApp
         {
             openFileDialog.FileName = "";
             openFileDialog.ShowReadOnly = true;
-            openFileDialog.Filter = "wav files| *.wav| All files (*.*)|*.*";
+            openFileDialog.Filter = @"wav files| *.wav| All files (*.*)|*.*";
 
             if(openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                alarmClockManager.ChooseAlarmSound(openFileDialog.FileName);
+                alarmManager.ChooseAlarmSound(openFileDialog.FileName);
             }
         }
         private void btn_stopTestingSound_Click(object sender, EventArgs e)
         {
-            alarmClockManager.KillAlarmClock();
+            alarmManager.KillAlarmClock();
         }
         private void ManageRadioButtons(object sender, EventArgs e)
         {
@@ -187,43 +187,32 @@ namespace MovieKillerDesktopApp
             var checkPassword = cb_passwordInspection.Checked;
             if(checkPassword)
             {
-                principalForm.CheckingPasswordToConnect = true;
+                principalForm.IsCheckingPasswordAvaible = true;
             }
             else
             {
-                principalForm.CheckingPasswordToConnect = false;
+                principalForm.IsCheckingPasswordAvaible = false;
             }
-        }
-
-        private void groupBox3_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void SettingsWindow_Load(object sender, EventArgs e)
-        {
-
         }
         private void btn_settingsToDefault(object sender, EventArgs e)
         {
             var principalForm = Application.OpenForms.OfType<MainWindow>().Single();
-            var password = PermissionControl("Proszę podać hasło: ");
+            var password = PermissionControlForm("Proszę podać hasło: ");
 
-            if(principalForm.PasswordToConnection == password)
+            if(principalForm.PasswordToOpenConnection == password)
             {
                 colorManager.SetDefaultColor();
                 principalForm.SetLayoutColor();
-                alarmClockManager.ChooseAlarmSound(AlarmClockManager.KindOfAlarmSound.Alarm1);
-                principalForm.CheckingPasswordToConnect = true;
+                alarmManager.ChooseAlarmSound(KindOfAlarmSound.Alarm1);
+                principalForm.IsCheckingPasswordAvaible = true;
                 Close();
             }
             else if(password != "CANCEL")
             {
-                MessageBox.Show("Podano nieprawidłowe hasło");
+                MessageBox.Show(@"Podano nieprawidłowe hasło");
             }
-
         }
-        private static string PermissionControl(string message)
+        private static string PermissionControlForm(string message)
         {
             var prompt = new Form
             {
@@ -236,7 +225,7 @@ namespace MovieKillerDesktopApp
             var textBox = new TextBox { Left = 20, Top = 50, Width = 150 };
             var confirm = new Button
             {
-                Text = "Zatwierdź",
+                Text = @"Zatwierdź",
                 Left = 20,
                 Width = 70,
                 Top = 80,
@@ -248,7 +237,7 @@ namespace MovieKillerDesktopApp
             };
             var cancel = new Button
             {
-                Text = "Anuluj",
+                Text = @"Anuluj",
                 Left = 90,
                 Width = 70,
                 Top = 80,
@@ -263,15 +252,9 @@ namespace MovieKillerDesktopApp
 
             return prompt.ShowDialog() == DialogResult.OK ? textBox.Text : "CANCEL";
         }
-
-
         private void btn_saveChanges_Click(object sender, EventArgs e)
         {
             Close();
-        }
-        private void cb_collectionOfAvaibleSounds_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

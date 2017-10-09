@@ -16,7 +16,7 @@ namespace MovieKillerDesktopApp
             if(IsPasswordCorrect(tb_enterOldPassword.Text))
             {
                 var principalForm = Application.OpenForms.OfType<MainWindow>().Single();
-                principalForm.PasswordToConnection = tb_enterNewPassword.Text;
+                principalForm.PasswordToOpenConnection = tb_enterNewPassword.Text;
                 MessageBox.Show("Dokonano zmiany hasła!", "Komunikat");
             }
             else
@@ -28,7 +28,7 @@ namespace MovieKillerDesktopApp
         private bool IsPasswordCorrect(string oldPasswordGivenByUser)
         {
             var principalForm = Application.OpenForms.OfType<MainWindow>().Single();
-            var correctPassword = principalForm.PasswordToConnection;
+            var correctPassword = principalForm.PasswordToOpenConnection;
 
             if(oldPasswordGivenByUser == correctPassword)
             {
