@@ -1,0 +1,111 @@
+C:\Users\Tomasz\Desktop\Kowal program\TcpClientWP\TcpClientWP\bin\Debug\App.xbf
+C:\Users\Tomasz\Desktop\Kowal program\TcpClientWP\TcpClientWP\bin\Debug\MainPage.xbf
+C:\Users\Tomasz\Desktop\Kowal program\TcpClientWP\TcpClientWP\bin\Debug\TcpClientWP.xr.xml
+C:\Users\Tomasz\Desktop\Kowal program\TcpClientWP\TcpClientWP\bin\Debug\TcpClientWP.exe
+C:\Users\Tomasz\Desktop\Kowal program\TcpClientWP\TcpClientWP\bin\Debug\TcpClientWP.pdb
+C:\Users\Tomasz\Desktop\Kowal program\TcpClientWP\TcpClientWP\bin\Debug\resources.pri
+C:\Users\Tomasz\Desktop\Kowal program\TcpClientWP\TcpClientWP\bin\Debug\AppxManifest.xml
+C:\Users\Tomasz\Desktop\Kowal program\TcpClientWP\TcpClientWP\bin\Debug\TcpClientWP.build.appxrecipe
+C:\Users\Tomasz\Desktop\Kowal program\TcpClientWP\TcpClientWP\obj\Debug\App.g.i.cs
+C:\Users\Tomasz\Desktop\Kowal program\TcpClientWP\TcpClientWP\obj\Debug\App.g.cs
+C:\Users\Tomasz\Desktop\Kowal program\TcpClientWP\TcpClientWP\obj\Debug\MainPage.g.i.cs
+C:\Users\Tomasz\Desktop\Kowal program\TcpClientWP\TcpClientWP\obj\Debug\MainPage.g.cs
+C:\Users\Tomasz\Desktop\Kowal program\TcpClientWP\TcpClientWP\obj\Debug\XamlTypeInfo.g.cs
+C:\Users\Tomasz\Desktop\Kowal program\TcpClientWP\TcpClientWP\obj\Debug\App.xaml
+C:\Users\Tomasz\Desktop\Kowal program\TcpClientWP\TcpClientWP\obj\Debug\App.xbf
+C:\Users\Tomasz\Desktop\Kowal program\TcpClientWP\TcpClientWP\obj\Debug\XamlSaveStateFile.xml
+C:\Users\Tomasz\Desktop\Kowal program\TcpClientWP\TcpClientWP\obj\Debug\MainPage.xaml
+C:\Users\Tomasz\Desktop\Kowal program\TcpClientWP\TcpClientWP\obj\Debug\MainPage.xbf
+C:\Users\Tomasz\Desktop\Kowal program\TcpClientWP\TcpClientWP\obj\Debug\TcpClientWP.exe
+C:\Users\Tomasz\Desktop\Kowal program\TcpClientWP\TcpClientWP\obj\Debug\TcpClientWP.pdb
+C:\Users\Tomasz\Desktop\Kowal program\TcpClientWP\TcpClientWP\obj\Debug\priconfig.xml
+C:\Users\Tomasz\Desktop\Kowal program\TcpClientWP\TcpClientWP\obj\Debug\priconfig.xml.intermediate
+C:\Users\Tomasz\Desktop\Kowal program\TcpClientWP\TcpClientWP\obj\Debug\layout.resfiles
+C:\Users\Tomasz\Desktop\Kowal program\TcpClientWP\TcpClientWP\obj\Debug\layout.resfiles.intermediate
+C:\Users\Tomasz\Desktop\Kowal program\TcpClientWP\TcpClientWP\obj\Debug\resources.resfiles
+C:\Users\Tomasz\Desktop\Kowal program\TcpClientWP\TcpClientWP\obj\Debug\resources.resfiles.intermediate
+C:\Users\Tomasz\Desktop\Kowal program\TcpClientWP\TcpClientWP\obj\Debug\pri.resfiles
+C:\Users\Tomasz\Desktop\Kowal program\TcpClientWP\TcpClientWP\obj\Debug\pri.resfiles.intermediate
+C:\Users\Tomasz\Desktop\Kowal program\TcpClientWP\TcpClientWP\obj\Debug\qualifiers.txt
+C:\Users\Tomasz\Desktop\Kowal program\TcpClientWP\TcpClientWP\obj\Debug\qualifiers.txt.intermediate
+C:\Users\Tomasz\Desktop\Kowal program\TcpClientWP\TcpClientWP\obj\Debug\MultipleQualifiersPerDimensionFound.txt
+C:\Users\Tomasz\Desktop\Kowal program\TcpClientWP\TcpClientWP\obj\Debug\ProjectArchitectures.txt
+C:\Users\Tomasz\Desktop\Kowal program\TcpClientWP\TcpClientWP\obj\Debug\StartPage.g.i.cs
+C:\Users\Tomasz\Desktop\Kowal program\TcpClientWP\TcpClientWP\obj\Debug\StartPage.g.cs
+C:\Users\Tomasz\Desktop\Kowal program\TcpClientWP\TcpClientWP\obj\Debug\StartPage.xaml
+C:\Users\Tomasz\Desktop\Kowal program\TcpClientWP\TcpClientWP\obj\Debug\StartPage.xbf
+C:\Users\Tomasz\Desktop\Kowal program\TcpClientWP\TcpClientWP\bin\Debug\StartPage.xbf
+C:\Users\Tomasz\Desktop\PROJEKTY\TcpClientWP\TcpClientWP\bin\Debug\App.xbf
+C:\Users\Tomasz\Desktop\PROJEKTY\TcpClientWP\TcpClientWP\bin\Debug\MainPage.xbf
+C:\Users\Tomasz\Desktop\PROJEKTY\TcpClientWP\TcpClientWP\bin\Debug\StartPage.xbf
+C:\Users\Tomasz\Desktop\PROJEKTY\TcpClientWP\TcpClientWP\bin\Debug\TcpClientWP.xr.xml
+C:\Users\Tomasz\Desktop\PROJEKTY\TcpClientWP\TcpClientWP\bin\Debug\TcpClientWP.exe
+C:\Users\Tomasz\Desktop\PROJEKTY\TcpClientWP\TcpClientWP\bin\Debug\TcpClientWP.pdb
+C:\Users\Tomasz\Desktop\PROJEKTY\TcpClientWP\TcpClientWP\bin\Debug\resources.pri
+C:\Users\Tomasz\Desktop\PROJEKTY\TcpClientWP\TcpClientWP\bin\Debug\AppxManifest.xml
+C:\Users\Tomasz\Desktop\PROJEKTY\TcpClientWP\TcpClientWP\bin\Debug\TcpClientWP.build.appxrecipe
+C:\Users\Tomasz\Desktop\PROJEKTY\TcpClientWP\TcpClientWP\obj\Debug\App.g.i.cs
+C:\Users\Tomasz\Desktop\PROJEKTY\TcpClientWP\TcpClientWP\obj\Debug\App.g.cs
+C:\Users\Tomasz\Desktop\PROJEKTY\TcpClientWP\TcpClientWP\obj\Debug\MainPage.g.i.cs
+C:\Users\Tomasz\Desktop\PROJEKTY\TcpClientWP\TcpClientWP\obj\Debug\MainPage.g.cs
+C:\Users\Tomasz\Desktop\PROJEKTY\TcpClientWP\TcpClientWP\obj\Debug\StartPage.g.i.cs
+C:\Users\Tomasz\Desktop\PROJEKTY\TcpClientWP\TcpClientWP\obj\Debug\StartPage.g.cs
+C:\Users\Tomasz\Desktop\PROJEKTY\TcpClientWP\TcpClientWP\obj\Debug\XamlTypeInfo.g.cs
+C:\Users\Tomasz\Desktop\PROJEKTY\TcpClientWP\TcpClientWP\obj\Debug\App.xaml
+C:\Users\Tomasz\Desktop\PROJEKTY\TcpClientWP\TcpClientWP\obj\Debug\MainPage.xaml
+C:\Users\Tomasz\Desktop\PROJEKTY\TcpClientWP\TcpClientWP\obj\Debug\StartPage.xaml
+C:\Users\Tomasz\Desktop\PROJEKTY\TcpClientWP\TcpClientWP\obj\Debug\App.xbf
+C:\Users\Tomasz\Desktop\PROJEKTY\TcpClientWP\TcpClientWP\obj\Debug\MainPage.xbf
+C:\Users\Tomasz\Desktop\PROJEKTY\TcpClientWP\TcpClientWP\obj\Debug\StartPage.xbf
+C:\Users\Tomasz\Desktop\PROJEKTY\TcpClientWP\TcpClientWP\obj\Debug\XamlSaveStateFile.xml
+C:\Users\Tomasz\Desktop\PROJEKTY\TcpClientWP\TcpClientWP\obj\Debug\TcpClientWP.exe
+C:\Users\Tomasz\Desktop\PROJEKTY\TcpClientWP\TcpClientWP\obj\Debug\TcpClientWP.pdb
+C:\Users\Tomasz\Desktop\PROJEKTY\TcpClientWP\TcpClientWP\obj\Debug\priconfig.xml
+C:\Users\Tomasz\Desktop\PROJEKTY\TcpClientWP\TcpClientWP\obj\Debug\priconfig.xml.intermediate
+C:\Users\Tomasz\Desktop\PROJEKTY\TcpClientWP\TcpClientWP\obj\Debug\layout.resfiles
+C:\Users\Tomasz\Desktop\PROJEKTY\TcpClientWP\TcpClientWP\obj\Debug\layout.resfiles.intermediate
+C:\Users\Tomasz\Desktop\PROJEKTY\TcpClientWP\TcpClientWP\obj\Debug\resources.resfiles
+C:\Users\Tomasz\Desktop\PROJEKTY\TcpClientWP\TcpClientWP\obj\Debug\resources.resfiles.intermediate
+C:\Users\Tomasz\Desktop\PROJEKTY\TcpClientWP\TcpClientWP\obj\Debug\pri.resfiles
+C:\Users\Tomasz\Desktop\PROJEKTY\TcpClientWP\TcpClientWP\obj\Debug\pri.resfiles.intermediate
+C:\Users\Tomasz\Desktop\PROJEKTY\TcpClientWP\TcpClientWP\obj\Debug\qualifiers.txt
+C:\Users\Tomasz\Desktop\PROJEKTY\TcpClientWP\TcpClientWP\obj\Debug\qualifiers.txt.intermediate
+C:\Users\Tomasz\Desktop\PROJEKTY\TcpClientWP\TcpClientWP\obj\Debug\MultipleQualifiersPerDimensionFound.txt
+C:\Users\Tomasz\Desktop\PROJEKTY\TcpClientWP\TcpClientWP\obj\Debug\ProjectArchitectures.txt
+C:\Users\Tomasz\Desktop\Repositories\TcpClientWP\TcpClientWP\bin\Debug\App.xbf
+C:\Users\Tomasz\Desktop\Repositories\TcpClientWP\TcpClientWP\bin\Debug\MainPage.xbf
+C:\Users\Tomasz\Desktop\Repositories\TcpClientWP\TcpClientWP\bin\Debug\StartPage.xbf
+C:\Users\Tomasz\Desktop\Repositories\TcpClientWP\TcpClientWP\bin\Debug\resources.pri
+C:\Users\Tomasz\Desktop\Repositories\TcpClientWP\TcpClientWP\bin\Debug\AppxManifest.xml
+C:\Users\Tomasz\Desktop\Repositories\TcpClientWP\TcpClientWP\bin\Debug\TcpClientWP.build.appxrecipe
+C:\Users\Tomasz\Desktop\Repositories\TcpClientWP\TcpClientWP\obj\Debug\App.g.i.cs
+C:\Users\Tomasz\Desktop\Repositories\TcpClientWP\TcpClientWP\obj\Debug\App.g.cs
+C:\Users\Tomasz\Desktop\Repositories\TcpClientWP\TcpClientWP\obj\Debug\MainPage.g.i.cs
+C:\Users\Tomasz\Desktop\Repositories\TcpClientWP\TcpClientWP\obj\Debug\MainPage.g.cs
+C:\Users\Tomasz\Desktop\Repositories\TcpClientWP\TcpClientWP\obj\Debug\StartPage.g.i.cs
+C:\Users\Tomasz\Desktop\Repositories\TcpClientWP\TcpClientWP\obj\Debug\StartPage.g.cs
+C:\Users\Tomasz\Desktop\Repositories\TcpClientWP\TcpClientWP\obj\Debug\XamlTypeInfo.g.cs
+C:\Users\Tomasz\Desktop\Repositories\TcpClientWP\TcpClientWP\obj\Debug\App.xaml
+C:\Users\Tomasz\Desktop\Repositories\TcpClientWP\TcpClientWP\obj\Debug\MainPage.xaml
+C:\Users\Tomasz\Desktop\Repositories\TcpClientWP\TcpClientWP\obj\Debug\StartPage.xaml
+C:\Users\Tomasz\Desktop\Repositories\TcpClientWP\TcpClientWP\obj\Debug\App.xbf
+C:\Users\Tomasz\Desktop\Repositories\TcpClientWP\TcpClientWP\obj\Debug\MainPage.xbf
+C:\Users\Tomasz\Desktop\Repositories\TcpClientWP\TcpClientWP\obj\Debug\StartPage.xbf
+C:\Users\Tomasz\Desktop\Repositories\TcpClientWP\TcpClientWP\obj\Debug\XamlSaveStateFile.xml
+C:\Users\Tomasz\Desktop\Repositories\TcpClientWP\TcpClientWP\obj\Debug\priconfig.xml
+C:\Users\Tomasz\Desktop\Repositories\TcpClientWP\TcpClientWP\obj\Debug\priconfig.xml.intermediate
+C:\Users\Tomasz\Desktop\Repositories\TcpClientWP\TcpClientWP\obj\Debug\layout.resfiles
+C:\Users\Tomasz\Desktop\Repositories\TcpClientWP\TcpClientWP\obj\Debug\layout.resfiles.intermediate
+C:\Users\Tomasz\Desktop\Repositories\TcpClientWP\TcpClientWP\obj\Debug\resources.resfiles
+C:\Users\Tomasz\Desktop\Repositories\TcpClientWP\TcpClientWP\obj\Debug\resources.resfiles.intermediate
+C:\Users\Tomasz\Desktop\Repositories\TcpClientWP\TcpClientWP\obj\Debug\pri.resfiles
+C:\Users\Tomasz\Desktop\Repositories\TcpClientWP\TcpClientWP\obj\Debug\pri.resfiles.intermediate
+C:\Users\Tomasz\Desktop\Repositories\TcpClientWP\TcpClientWP\obj\Debug\qualifiers.txt
+C:\Users\Tomasz\Desktop\Repositories\TcpClientWP\TcpClientWP\obj\Debug\qualifiers.txt.intermediate
+C:\Users\Tomasz\Desktop\Repositories\TcpClientWP\TcpClientWP\obj\Debug\MultipleQualifiersPerDimensionFound.txt
+C:\Users\Tomasz\Desktop\Repositories\TcpClientWP\TcpClientWP\obj\Debug\ProjectArchitectures.txt
+C:\Users\Tomasz\Desktop\Repositories\TcpClientWP\TcpClientWP\bin\Debug\MovieKillerMobileApp.xr.xml
+C:\Users\Tomasz\Desktop\Repositories\TcpClientWP\TcpClientWP\bin\Debug\MovieKillerMobileApp.exe
+C:\Users\Tomasz\Desktop\Repositories\TcpClientWP\TcpClientWP\bin\Debug\MovieKillerMobileApp.pdb
+C:\Users\Tomasz\Desktop\Repositories\TcpClientWP\TcpClientWP\obj\Debug\MovieKillerMobileApp.exe
+C:\Users\Tomasz\Desktop\Repositories\TcpClientWP\TcpClientWP\obj\Debug\MovieKillerMobileApp.pdb

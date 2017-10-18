@@ -1,0 +1,65 @@
+﻿<Page
+    x:Class="MovieKillerMobileApp.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MovieKillerMobileApp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.Resources>
+        <Style x:Key="MyButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="SlateGray" />
+            <Setter Property="Foreground" Value="#FF51D3AB" />
+            <Setter Property="FontSize" Value="15" />
+        </Style>
+        <Style x:Key="MyButtonStyle2" TargetType="Button">
+            <Setter Property="Background" Value="#FFA2B3C5" />
+            <Setter Property="Foreground" Value="#FF348E72" />
+            <Setter Property="FontSize" Value="15" />
+        </Style>
+    </Page.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="120"/>
+            <RowDefinition Height="120"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+
+        <Button x:Name="BtnShutDownComputer" Content="Wyłącz" HorizontalAlignment="Left"  VerticalAlignment="Top" Grid.Row="2" Style="{StaticResource MyButtonStyle}" Click="SendCommand_ButtonClick"/>
+        <Button x:Name="BtnRestartComputer" Content="Zrestartuj" HorizontalAlignment="Center"  VerticalAlignment="Top" Grid.Row="2" Style="{StaticResource MyButtonStyle}" Click="SendCommand_ButtonClick"/>
+        <Button x:Name="BtnHibernateComputer" Content="Uśpij" HorizontalAlignment="Right"  VerticalAlignment="Top" Grid.Row="2" Style="{StaticResource MyButtonStyle}" Click="SendCommand_ButtonClick"/>
+
+        <Button x:Name="BtnLockComputer" Content="Zablokuj" HorizontalAlignment="Left"  VerticalAlignment="Top" Grid.Row="3" Style="{StaticResource MyButtonStyle}" Click="SendCommand_ButtonClick"/>
+        <Button x:Name="BtnLogoutComputer" Content="Wyloguj" HorizontalAlignment="Center"  VerticalAlignment="Top" Grid.Row="3" Style="{StaticResource MyButtonStyle}" Click="SendCommand_ButtonClick"/>
+        <Button x:Name="BtnAlarmClock" Content="Budzik" HorizontalAlignment="Right"  VerticalAlignment="Top" Grid.Row="3" Style="{StaticResource MyButtonStyle}" Click="SendCommand_ButtonClick"/>
+
+        <Button x:Name="BtnAddTime" Content="+" HorizontalAlignment="Left"  VerticalAlignment="Top" Grid.Row="5" MinWidth="0" MaxHeight="120" Height="100" Width="60" Padding="0" Margin="40,0,0,0" Style="{StaticResource MyButtonStyle2}" Click="ManageTime_ButtonClick"/>
+        <Button x:Name="BtnStopRunningOperation" Content="STOP" HorizontalAlignment="Center"  VerticalAlignment="Top" Grid.Row="5" Height="109"  Grid.RowSpan="2" Click="BtnStopRunningOperation_Click" Background="#FFE04343"/>
+        <Button x:Name="BtnGetFasterTime" Content="+" HorizontalAlignment="Right"  VerticalAlignment="Top" Grid.Row="5" MinWidth="0" MaxHeight="120" Height="100" Width="60" Padding="0" Margin="0,0,40,0" Style="{StaticResource MyButtonStyle2}" Click="ManageSpeed_ButtonClick"/>
+
+        <Button x:Name="BtnSubtractTime" Content="-" HorizontalAlignment="Left"  VerticalAlignment="Top" Grid.Row="6" MinWidth="0" MaxHeight="120" Height="100" Width="60" Padding="0" Margin="40,0,0,0"  Style="{StaticResource MyButtonStyle2}" Click="ManageTime_ButtonClick"/>
+        <Button x:Name="BtnAbcdefgh" Content="Coś" HorizontalAlignment="Center"  VerticalAlignment="Top" Grid.Row="6"/>
+        <Button x:Name="BtnSlowDownSpeed" Content="-" HorizontalAlignment="Right"  VerticalAlignment="Top" Grid.Row="6" MinWidth="0" MaxHeight="120" Height="100" Width="60" Padding="0" Margin="0,0,40,0"  Style="{StaticResource MyButtonStyle2}" Click="ManageSpeed_ButtonClick"/>
+
+        <TextBlock Text="Pozostały czas" HorizontalAlignment="Center" Grid.Row="7"/>
+
+        <TextBlock x:Name="TxtClock" Text="00:00:00" HorizontalAlignment="Center" Grid.Row="8"/>
+
+        <ProgressBar x:Name="ProgressBarTimeToEnd" Grid.Row="9"/>
+        <ComboBox x:Name="ComboBox" HorizontalAlignment="Left" Margin="607,39,-327,0" Grid.Row="1" VerticalAlignment="Top" Width="120"/>
+        <Image x:Name="ImageConnectionStatus" HorizontalAlignment="Left" Height="40" Margin="10,10,0,0" VerticalAlignment="Top" Width="67"/>
+    </Grid>
+</Page>
+
+    
