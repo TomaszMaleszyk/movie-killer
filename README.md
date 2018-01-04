@@ -11,3 +11,5 @@ Every main functionality of desktop app you could set by your mobile phone durin
 This project consist of desktop application and Windows Phone application created in C# language.
 
 Data exchenge between them takes place by wireless local area networking (Wi-Fi).
+
+⇒ Visual Studio 2015, .NET 4.5.2, Windows Forms, Windows Phone 8.1
