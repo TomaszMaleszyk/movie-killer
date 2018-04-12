@@ -1,4 +1,5 @@
 # Movie Killer
+### About project
 The reason why I made this application is compassion to every lazy human being on this world, which has a problem with control activity status of their PC.
 
 It’s awesome tool to shutdown PC after watching movie on lazy Sunday evening or when You like falling asleep while music is playing from your computer but you don’t like to pay high bills caused by playing music when You are sleeping. In case of that Yours valet doesn’t scream that level of Yours resources is low and bills have a space to be little bit higher, You could set alarm clock on every time what You want. 
@@ -12,4 +13,5 @@ This project consist of desktop application and Windows Phone application create
 
 Data exchenge between them takes place by wireless local area networking (Wi-Fi).
 
+### Technologies
 ⇒ Visual Studio 2015, .NET 4.5.2, Windows Forms, Windows Phone 8.1
